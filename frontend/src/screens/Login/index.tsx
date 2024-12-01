@@ -20,23 +20,23 @@ export default function Login({ navigation }) {
   const [password, setPassword] = useState("");
   const { signIn } = useAuth();
 
-  // const handleLogin = async () => {
-  //   if (!email || !password) {
-  //     alert("Por favor, preencha todos os campos!");
-  //     return;
-  //   }
+   const handleLogin = async () => {
+     if (!email || !password) {
+       alert("Por favor, preencha todos os campos!");
+       return;
+     }
 
-  //   try {
-  //     await signIn(email, password);
-  //     navigation.reset({
-  //       index: 0,
-  //       routes: [{ name: "Auth", params: { screen: "Home" } }],
-  //     });
-  //   } catch (error) {
-  //     alert("E-mail ou senha inválidos!");
-  //     console.log(error);
-  //   }
-  // };
+     try {
+       await signIn(email, password);
+       navigation.reset({
+         index: 0,
+         routes: [{ name: "Auth", params: { screen: "Home" } }],
+       });
+     } catch (error) {
+       alert("E-mail ou senha inválidos!");
+       console.log(error);
+     }
+   };
 
   return (
     <Wrapper>
