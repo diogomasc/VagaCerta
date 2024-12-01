@@ -1,0 +1,22 @@
+# Global ignores
+
+# Logs
+logs/
+*.log
+
+# Temporary files
+*.tmp
+*.swp
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Environment variables
+.env
+
+# Build outputs
+dist/
+
+# Misc
+node_modules/

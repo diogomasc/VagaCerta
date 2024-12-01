@@ -1,0 +1,19 @@
+# Node.js
+node_modules/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# Environment variables
+.env
+
+# Build outputs
+dist/
+
+# Database
+database.sqlite
+
+# Misc
+.DS_Store
