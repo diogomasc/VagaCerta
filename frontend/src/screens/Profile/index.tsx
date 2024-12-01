@@ -31,39 +31,60 @@ export default function Profile({ navigation }) {
   const [isModalVisible, setModalVisible] = useState(false);
 
   const handleSave = async () => {
+    // Verifica se houve alguma alteração nos dados
+    const updatedData: Partial<User> = {};
+    if (name !== user.name) updatedData.name = name;
+    if (email !== user.email) updatedData.email = email;
+    if (newPassword) updatedData.password = newPassword;
+
+    // Se nada foi alterado, mostra o alerta e retorna sem abrir a modal
+    if (Object.keys(updatedData).length === 0) {
+      Alert.alert("Nada a atualizar", "Nenhuma informação foi alterada!");
+      return; // Não abre a modal nem continua a execução
+    }
+
     setModalVisible(true);
   };
 
-   const handleConfirmPassword = async (password: string) => {
-     setModalVisible(false);
-     if (password === user?.password) {
-       const updatedData: Partial<User> = {};
-      if (name !== user.name) updatedData.name = name;
-       if (email !== user.email) updatedData.email = email;
-       if (newPassword) updatedData.password = newPassword;
+  const handleConfirmPassword = async (password: string) => {
+    // Verifica se houve alguma alteração nos dados
+    const updatedData: Partial<User> = {};
+    if (name !== user.name) updatedData.name = name;
+    if (email !== user.email) updatedData.email = email;
+    if (newPassword) updatedData.password = newPassword;
 
-       const success = await updateUser(updatedData);
-       if (success) {
-         Alert.alert("Sucesso", "Informações salvas com sucesso!");
-       } else {
-         Alert.alert("Erro", "Falha ao atualizar as informações!");
-       }
-     } else {
-       Alert.alert("Erro", "Senha incorreta!");
-     }
-   };
+    // Se nada foi alterado, mostra o alerta e retorna sem abrir a modal
+    if (Object.keys(updatedData).length === 0) {
+      Alert.alert("Nada a atualizar", "Nenhuma informação foi alterada!");
+      return; // Não abre a modal nem continua a execução
+    }
 
-   const handleLogout = () => {
-     Alert.alert(
-       "Confirmação",
-       "Você tem certeza que deseja sair?",
-       [
-         { text: "Cancelar", style: "cancel" },
-         { text: "Sim", onPress: signOut },
-       ],
-       { cancelable: true }
-     );
-   };
+    // Caso haja alterações, abre a modal para digitar a senha
+    setModalVisible(false);
+
+    if (password === user?.password) {
+      const success = await updateUser(updatedData);
+      if (success) {
+        Alert.alert("Sucesso", "Informações salvas com sucesso!");
+      } else {
+        Alert.alert("Erro", "Falha ao atualizar as informações!");
+      }
+    } else {
+      Alert.alert("Erro", "Senha incorreta!");
+    }
+  };
+
+  const handleLogout = () => {
+    Alert.alert(
+      "Confirmação",
+      "Você tem certeza que deseja sair?",
+      [
+        { text: "Cancelar", style: "cancel" },
+        { text: "Sim", onPress: signOut },
+      ],
+      { cancelable: true }
+    );
+  };
 
   return (
     <Wrapper>
