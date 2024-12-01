@@ -53,23 +53,23 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
     loadStorageData();
   }, []);
 
-  // const signIn = async (email: string, password: string) => {
-  //   setLoading(true);
-  //   try {
-  //     const response = await api.get("/users");
-  //     const userData = response.data.find(
-  //       (u: any) => u.email === email && u.password === password
-  //     );
-  //     if (userData) {
-  //       setUser(userData);
-  //       await AsyncStorage.setItem("@AppName:user", JSON.stringify(userData));
-  //     } else {
-  //       throw new Error("Credenciais inválidas");
-  //     }
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // };
+   const signIn = async (email: string, password: string) => {
+     setLoading(true);
+     try {
+       const response = await api.get("/users");
+       const userData = response.data.find(
+         (u: any) => u.email === email && u.password === password
+       );
+       if (userData) {
+         setUser(userData);
+         await AsyncStorage.setItem("@AppName:user", JSON.stringify(userData));
+       } else {
+         throw new Error("Credenciais inválidas");
+       }
+     } finally {
+       setLoading(false);
+     }
+   };
 
   // const signOut = async () => {
   //   try {
