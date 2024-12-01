@@ -24,7 +24,7 @@ sequelize
     console.log("http://localhost:3000/users");
     console.log("http://localhost:3000/jobs");
     console.log(
-      "\nPara mais informações, acesse a documentação do projeto:\nhttps://github.com/diogomasc/API-VagaCerta/blob/main/README.md"
+      "\nPara mais informações, acesse a documentação do projeto:\nhttps://github.com/diogomasc/VagaCerta/blob/main/backend/README.md"
     );
     console.log(
       '\nAo iniciar o servidor do Front-End do App VagaCerta na tela de login, use o usuário "Administrador" de e-mail "admin@admin.com" com senha: "123"\n'
