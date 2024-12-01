@@ -46,17 +46,17 @@ export default function Details({ route, navigation }) {
     fetchJob();
   }, [id]);
 
-  // const handleContactPress = () => {
-  //   if (job && job.phone) {
-  //     const message = `Olá, estou interessado na vaga de ${job.title} na empresa ${job.company}.`;
-  //     const url = `https://wa.me/${job.phone}?text=${encodeURIComponent(
-  //       message
-  //     )}`;
-  //     Linking.openURL(url).catch((error) =>
-  //       console.log("Erro ao abrir WhatsApp:", error)
-  //     );
-  //   }
-  // };
+   const handleContactPress = () => {
+     if (job && job.phone) {
+       const message = `Olá, estou interessado na vaga de ${job.title} na empresa ${job.company}.`;
+       const url = `https://wa.me/${job.phone}?text=${encodeURIComponent(
+         message
+       )}`;
+       Linking.openURL(url).catch((error) =>
+         console.log("Erro ao abrir WhatsApp:", error)
+       );
+     }
+   };
 
   return (
     <Wrapper>
