@@ -71,38 +71,38 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
      }
    };
 
-  // const signOut = async () => {
-  //   try {
-  //     setUser(null);
-  //     await AsyncStorage.removeItem("@AppName:user");
-  //     alert("Logout realizado com sucesso!");
-  //     navigation.reset({
-  //       index: 0,
-  //       routes: [{ name: "Login" }],
-  //     });
-  //   } catch (error) {
-  //     console.log("Erro ao sair:", error);
-  //   }
-  // };
+  const signOut = async () => {
+    try {
+      setUser(null);
+      await AsyncStorage.removeItem("@AppName:user");
+      alert("Logout realizado com sucesso!");
+      navigation.reset({
+        index: 0,
+        routes: [{ name: "Login" }],
+      });
+    } catch (error) {
+      console.log("Erro ao sair:", error);
+    }
+  };
 
-  // const updateUser = async (updatedData: Partial<User>): Promise<boolean> => {
-  //   if (!user) return false;
-  //   try {
-  //     const response = await api.put(`/users/${user.id}`, updatedData);
-  //     if (response.status === 200) {
-  //       const updatedUser = { ...user, ...updatedData };
-  //       setUser(updatedUser);
-  //       await AsyncStorage.setItem(
-  //         "@AppName:user",
-  //         JSON.stringify(updatedUser)
-  //       );
-  //       return true;
-  //     }
-  //   } catch (error) {
-  //     console.log("Failed to update user:", error);
-  //   }
-  //   return false;
-  // };
+  const updateUser = async (updatedData: Partial<User>): Promise<boolean> => {
+    if (!user) return false;
+    try {
+      const response = await api.put(`/users/${user.id}`, updatedData);
+      if (response.status === 200) {
+        const updatedUser = { ...user, ...updatedData };
+        setUser(updatedUser);
+        await AsyncStorage.setItem(
+          "@AppName:user",
+          JSON.stringify(updatedUser)
+        );
+        return true;
+      }
+    } catch (error) {
+      console.log("Failed to update user:", error);
+    }
+    return false;
+  };
 
   return (
     <AuthContext.Provider
