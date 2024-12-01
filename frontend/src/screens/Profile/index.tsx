@@ -34,36 +34,36 @@ export default function Profile({ navigation }) {
     setModalVisible(true);
   };
 
-  const handleConfirmPassword = async (password: string) => {
-    setModalVisible(false);
-    if (password === user?.password) {
-      const updatedData: Partial<User> = {};
-      if (name !== user.name) updatedData.name = name;
-      if (email !== user.email) updatedData.email = email;
-      if (newPassword) updatedData.password = newPassword;
+  // const handleConfirmPassword = async (password: string) => {
+  //   setModalVisible(false);
+  //   if (password === user?.password) {
+  //     const updatedData: Partial<User> = {};
+  //     if (name !== user.name) updatedData.name = name;
+  //     if (email !== user.email) updatedData.email = email;
+  //     if (newPassword) updatedData.password = newPassword;
 
-      const success = await updateUser(updatedData);
-      if (success) {
-        Alert.alert("Sucesso", "Informações salvas com sucesso!");
-      } else {
-        Alert.alert("Erro", "Falha ao atualizar as informações!");
-      }
-    } else {
-      Alert.alert("Erro", "Senha incorreta!");
-    }
-  };
+  //     const success = await updateUser(updatedData);
+  //     if (success) {
+  //       Alert.alert("Sucesso", "Informações salvas com sucesso!");
+  //     } else {
+  //       Alert.alert("Erro", "Falha ao atualizar as informações!");
+  //     }
+  //   } else {
+  //     Alert.alert("Erro", "Senha incorreta!");
+  //   }
+  // };
 
-  const handleLogout = () => {
-    Alert.alert(
-      "Confirmação",
-      "Você tem certeza que deseja sair?",
-      [
-        { text: "Cancelar", style: "cancel" },
-        { text: "Sim", onPress: signOut },
-      ],
-      { cancelable: true }
-    );
-  };
+  // const handleLogout = () => {
+  //   Alert.alert(
+  //     "Confirmação",
+  //     "Você tem certeza que deseja sair?",
+  //     [
+  //       { text: "Cancelar", style: "cancel" },
+  //       { text: "Sim", onPress: signOut },
+  //     ],
+  //     { cancelable: true }
+  //   );
+  // };
 
   return (
     <Wrapper>

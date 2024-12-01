@@ -53,56 +53,56 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
     loadStorageData();
   }, []);
 
-  const signIn = async (email: string, password: string) => {
-    setLoading(true);
-    try {
-      const response = await api.get("/users");
-      const userData = response.data.find(
-        (u: any) => u.email === email && u.password === password
-      );
-      if (userData) {
-        setUser(userData);
-        await AsyncStorage.setItem("@AppName:user", JSON.stringify(userData));
-      } else {
-        throw new Error("Credenciais inválidas");
-      }
-    } finally {
-      setLoading(false);
-    }
-  };
+  // const signIn = async (email: string, password: string) => {
+  //   setLoading(true);
+  //   try {
+  //     const response = await api.get("/users");
+  //     const userData = response.data.find(
+  //       (u: any) => u.email === email && u.password === password
+  //     );
+  //     if (userData) {
+  //       setUser(userData);
+  //       await AsyncStorage.setItem("@AppName:user", JSON.stringify(userData));
+  //     } else {
+  //       throw new Error("Credenciais inválidas");
+  //     }
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
 
-  const signOut = async () => {
-    try {
-      setUser(null);
-      await AsyncStorage.removeItem("@AppName:user");
-      alert("Logout realizado com sucesso!");
-      navigation.reset({
-        index: 0,
-        routes: [{ name: "Login" }],
-      });
-    } catch (error) {
-      console.log("Erro ao sair:", error);
-    }
-  };
+  // const signOut = async () => {
+  //   try {
+  //     setUser(null);
+  //     await AsyncStorage.removeItem("@AppName:user");
+  //     alert("Logout realizado com sucesso!");
+  //     navigation.reset({
+  //       index: 0,
+  //       routes: [{ name: "Login" }],
+  //     });
+  //   } catch (error) {
+  //     console.log("Erro ao sair:", error);
+  //   }
+  // };
 
-  const updateUser = async (updatedData: Partial<User>): Promise<boolean> => {
-    if (!user) return false;
-    try {
-      const response = await api.put(`/users/${user.id}`, updatedData);
-      if (response.status === 200) {
-        const updatedUser = { ...user, ...updatedData };
-        setUser(updatedUser);
-        await AsyncStorage.setItem(
-          "@AppName:user",
-          JSON.stringify(updatedUser)
-        );
-        return true;
-      }
-    } catch (error) {
-      console.log("Failed to update user:", error);
-    }
-    return false;
-  };
+  // const updateUser = async (updatedData: Partial<User>): Promise<boolean> => {
+  //   if (!user) return false;
+  //   try {
+  //     const response = await api.put(`/users/${user.id}`, updatedData);
+  //     if (response.status === 200) {
+  //       const updatedUser = { ...user, ...updatedData };
+  //       setUser(updatedUser);
+  //       await AsyncStorage.setItem(
+  //         "@AppName:user",
+  //         JSON.stringify(updatedUser)
+  //       );
+  //       return true;
+  //     }
+  //   } catch (error) {
+  //     console.log("Failed to update user:", error);
+  //   }
+  //   return false;
+  // };
 
   return (
     <AuthContext.Provider

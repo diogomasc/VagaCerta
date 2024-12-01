@@ -4,6 +4,8 @@
 
 O projeto VagaCerta foi desenvolvido como parte da Unidade 10 do curso ResTIC36, focado na comunicação entre backend e frontend. Trata-se de uma aplicação full-stack destinada ao gerenciamento de vagas de emprego. A API backend, crucial para o funcionamento do sistema, foi construída utilizando Node.js, Express, e Sequelize, garantindo um ambiente robusto e eficiente para a manipulação dos dados e interações do aplicativo.
 
+> **Aviso:** Antes de prosseguir, leia atentamente a seção **Conexão com a API** abaixo, pois contém informações importantes sobre a comunicação com a API.
+
 ## Tecnologias Utilizadas
 
 ### Backend
@@ -110,3 +112,17 @@ cd VagaCerta
 #### Parar a Execução:
 
 - Pressione `Ctrl + C` no terminal.
+
+### Conexão com a API
+
+Devido a problemas com o Axios, não foi possível acessar os endpoints usando `http://localhost:3000` como `baseURL`. Como solução, utilize o IP do emulador `http://10.0.2.2:3000`.
+
+Para máquinas Windows com Android Studio, esse IP pode funcionar. Alternativamente, teste `localhost` ou o IP da máquina para verificar se o problema do Axios persiste, ou para uso no Expo GO.
+
+Para obter o IP correto:
+
+- **Windows**: Use `ipconfig` no Prompt de Comando e veja o "Endereço IPv4".
+- **Linux**: Execute `hostname -I` ou `ip addr show` no Terminal. O IP estará em `eth0` ou `wlan0`.
+- **Mac**: No Terminal, digite `ifconfig` e encontre o IP em `en0` para Wi-Fi.
+
+No Expo GO, utilize o IP da máquina. Teste `localhost` para verificar se o problema do Axios foi resolvido.
